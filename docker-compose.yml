@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"  # FastAPI app exposed on port 8000
+    depends_on:
+      - db  # Ensures the database container starts first
+    environment:
+      - DATABASE_URL=postgresql+psycopg2://postgres:abcd@db:5432/xdb
+  db:
+    image: postgres:15  # PostgreSQL image
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: abcd
+      POSTGRES_DB: xdb
+    ports:
+      - "5432:5432"  # Expose PostgreSQL on port 5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persist PostgreSQL data
+
+volumes:
+    postgres_data:
+
