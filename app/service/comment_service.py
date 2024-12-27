@@ -11,7 +11,7 @@ def create_comment(comment: CommentModel,post_id:int,db:Session):
         return SuccessResponse(status="Error",message="Post not found")
     else:
         new_comment = Comment(text=comment.text,post_id=post_id)
-        post.commentsL.append(new_comment)
+        post.comments.append(new_comment)
         db.add(new_comment)
         db.commit()
         db.refresh(new_comment)

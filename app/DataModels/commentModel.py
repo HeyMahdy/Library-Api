@@ -12,7 +12,7 @@ class Comment(Base):
     text : Mapped[str] = mapped_column(String,nullable=False)
     post_id: Mapped[int] = mapped_column(ForeignKey("posts.id", ondelete="CASCADE"), nullable=False)
 
-    # Relationships
+    # Relationships #
 
 
 

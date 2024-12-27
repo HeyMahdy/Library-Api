@@ -12,7 +12,7 @@ class Post(Base):
     id : Mapped[int] = mapped_column(Integer, primary_key=True,index=True,autoincrement=True)
     title : Mapped[str] = mapped_column(String,nullable=False)
     description : Mapped[str] = mapped_column(String,nullable=False)
-    comments: Mapped[List["Comment"]] = relationship("Comment",  cascade="all, delete-orphan")
+    comments: Mapped[List["Comment"]] = relationship("Comment", cascade="all, delete-orphan")
 
 
 
